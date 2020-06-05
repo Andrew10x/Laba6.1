@@ -2,19 +2,20 @@
 #include <iostream>
 using namespace std;
 
-class figure
+class figure // абстрактный класс
 {
 protected:
-	float a;
+	float a; //a, b, c - стороны
 	float b;
 	float c;
-	float S;
+	float S; //S, P - площадь и периметр
 	float P;
 public:
-	virtual float square() = 0;
+	virtual float square() = 0; //чисто виртуалные функции
+	virtual float perimeter() = 0;
 };
 
-class rhombus: public figure
+class rhombus: public figure // класс ромб
 {
 	float height;
 public:
@@ -23,7 +24,7 @@ public:
 	float perimeter();
 };
 
-class rectangle: public figure
+class rectangle: public figure // класс прямоугольник
 {
 public:
 	rectangle(float side1, float side2);
@@ -31,10 +32,15 @@ public:
 	float perimeter();
 };
 
-class triangle: public figure
-{
+class triangle: public figure // класс треугольник
+{ 
+	float h;
 public:
-	triangle(float side1, float side2, float side3);
+	triangle(float side1, float side2, float side3, float h);
 	float square();
 	float perimeter();
 };
+
+void show_S_P(figure&); //показывает площадь и периметр
+void interface(); //интерфейс
+
